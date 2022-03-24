@@ -4,5 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RepublicaDeLosCocos.Core\RepublicaDeLosCocos.Core.csproj" />
+    <ProjectReference Include="..\RepublicaDeLosCocos.Infraestructure\RepublicaDeLosCocos.Infraestructure.csproj" />
+  </ItemGroup>
+
 
 </Project>
