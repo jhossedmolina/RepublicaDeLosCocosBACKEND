@@ -2,11 +2,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using RepublicaDeLosCocos.Core.Interfaces;
+using RepublicaDeLosCocos.Infraestructure.Data;
 using RepublicaDeLosCocos.Infraestructure.Repositories;
 using System;
 using System.Collections.Generic;
@@ -29,6 +31,9 @@ namespace RepublicaDeLosCocos.API
         {
             services.AddControllers();
 
+            services.AddDbContext<RepublicaDeLosCocosDBContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("RepublicaDeLosCocosDB"))
+            );
             services.AddTransient<IPatientRepository, PatientRepository>();
         }
 
