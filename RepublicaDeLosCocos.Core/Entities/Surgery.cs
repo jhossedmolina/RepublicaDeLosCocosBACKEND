@@ -15,10 +15,11 @@ namespace RepublicaDeLosCocos.Core.Entities
         }
 
         public int Id { get; set; }
+        public int IdSurgeryStatus { get; set; }
         public string SurgeryName { get; set; }
         public string NameDoctor { get; set; }
-        public string SurgeryStatus { get; set; }
 
+        public virtual SurgeryStatus IdSurgeryStatusNavigation { get; set; }
         public virtual ICollection<AssignPatient> AssignPatient { get; set; }
     }
 }
