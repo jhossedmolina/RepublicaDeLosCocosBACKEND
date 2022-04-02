@@ -2,6 +2,7 @@
 using RepublicaDeLosCocos.Core.Entities;
 using RepublicaDeLosCocos.Core.Interfaces;
 using RepublicaDeLosCocos.Infraestructure.Data;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,8 +28,21 @@ namespace RepublicaDeLosCocos.Infraestructure.Repositories
                     .OrderBy(t => t.IdTriage)
                     .ThenBy(t => t.CheckIn)
                     .ToListAsync();
-            patientQueue.Enqueue(patients);
             return patients;
+        }
+
+        public async Task<Patient> GetPatient(int id)
+        {
+            var patient = await _context.Patient.FirstOrDefaultAsync(x => x.Id == id);
+            return patient;
+        }
+
+        public async Task InsertPatient(Patient patient)
+        {
+            patient.IdPatientStatus = 1;
+            if (patient.CheckIn == null) patient.CheckIn = DateTime.Now;
+            _context.Patient.Add(patient);
+            await _context.SaveChangesAsync();
         }
 
 
