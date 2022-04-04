@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RepublicaDeLosCocos.Core.Interfaces;
 using RepublicaDeLosCocos.Infraestructure.Data;
+using RepublicaDeLosCocos.Infraestructure.Filters;
 using RepublicaDeLosCocos.Infraestructure.Repositories;
 using System;
 
@@ -35,7 +36,13 @@ namespace RepublicaDeLosCocos.API
             services.AddDbContext<RepublicaDeLosCocosDBContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("RepublicaDeLosCocosDB"))
             );
+
             services.AddTransient<IPatientRepository, PatientRepository>();
+
+            services.AddMvc(options =>
+            {
+                options.Filters.Add<ValidationFilter>();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
