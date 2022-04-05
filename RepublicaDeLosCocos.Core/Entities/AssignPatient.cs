@@ -16,6 +16,7 @@ namespace RepublicaDeLosCocos.Core.Entities
         public DateTime? RegistrationDate { get; set; }
 
         public virtual Patient IdPatientNavigation { get; set; }
+        public virtual PatientStatus IdPatientStatusNavigation { get; set; }
         public virtual Surgery IdSurgeryNavigation { get; set; }
     }
 }

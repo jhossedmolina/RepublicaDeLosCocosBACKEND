@@ -20,6 +20,12 @@ namespace RepublicaDeLosCocos.Infraestructure.Data.Configurations
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_AssignPatient_Patient");
 
+            builder.HasOne(d => d.IdPatientStatusNavigation)
+                .WithMany(p => p.AssignPatient)
+                .HasForeignKey(d => d.IdPatientStatus)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_AssignPatient_PatientStatus");
+
             builder.HasOne(d => d.IdSurgeryNavigation)
                 .WithMany(p => p.AssignPatient)
                 .HasForeignKey(d => d.IdSurgery)
