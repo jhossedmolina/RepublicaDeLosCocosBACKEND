@@ -11,6 +11,7 @@ namespace RepublicaDeLosCocos.Core.Entities
     {
         public PatientStatus()
         {
+            AssignPatient = new HashSet<AssignPatient>();
             Patient = new HashSet<Patient>();
         }
 
@@ -18,6 +19,7 @@ namespace RepublicaDeLosCocos.Core.Entities
         public int StatusCode { get; set; }
         public string StatusName { get; set; }
 
+        public virtual ICollection<AssignPatient> AssignPatient { get; set; }
         public virtual ICollection<Patient> Patient { get; set; }
     }
 }
