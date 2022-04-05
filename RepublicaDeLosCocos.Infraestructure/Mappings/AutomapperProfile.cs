@@ -11,8 +11,8 @@ namespace RepublicaDeLosCocos.Infraestructure.Mappings
     {
         public AutomapperProfile()
         {
-            CreateMap<Patient, PatientDTO>();
-            CreateMap<PatientDTO, Patient>();
+            CreateMap<Patient, PatientDTO>().ReverseMap();
+            CreateMap<Surgery, SurgeryDTO>().ReverseMap();
         }
     }
 }

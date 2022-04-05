@@ -32,8 +32,7 @@ namespace RepublicaDeLosCocos.Infraestructure.Validators
                 .Length(15, 500);
 
             RuleFor(patient => patient.CheckIn)
-                .Equal(DateTime.Now)
-                .WithMessage("La Fecha Y Hora Debe Ser Actual");
+                .Equal(DateTime.Now);
         }
     }
 }

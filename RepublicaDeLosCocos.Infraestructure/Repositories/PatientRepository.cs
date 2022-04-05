@@ -14,7 +14,6 @@ namespace RepublicaDeLosCocos.Infraestructure.Repositories
     {
         private readonly RepublicaDeLosCocosDBContext _context;
 
-        Queue patientQueue = new Queue();
         public PatientRepository(RepublicaDeLosCocosDBContext context)
         {
             _context = context; 

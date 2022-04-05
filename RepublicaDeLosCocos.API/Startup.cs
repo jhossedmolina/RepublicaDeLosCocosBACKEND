@@ -39,6 +39,7 @@ namespace RepublicaDeLosCocos.API
             );
 
             services.AddTransient<IPatientRepository, PatientRepository>();
+            services.AddTransient<ISurgeryRepository, SurgeryRepository>();
 
             services.AddMvc(options =>
             {
