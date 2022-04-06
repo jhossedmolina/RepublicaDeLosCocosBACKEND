@@ -11,6 +11,7 @@ namespace RepublicaDeLosCocos.Core.Entities
     {
         public Triage()
         {
+            AssignPatient = new HashSet<AssignPatient>();
             Patient = new HashSet<Patient>();
         }
 
@@ -19,6 +20,7 @@ namespace RepublicaDeLosCocos.Core.Entities
         public string TriageName { get; set; }
         public string TriagePriority { get; set; }
 
+        public virtual ICollection<AssignPatient> AssignPatient { get; set; }
         public virtual ICollection<Patient> Patient { get; set; }
     }
 }

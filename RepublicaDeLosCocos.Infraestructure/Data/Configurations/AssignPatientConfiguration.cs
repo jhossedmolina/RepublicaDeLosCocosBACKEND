@@ -8,9 +8,9 @@ namespace RepublicaDeLosCocos.Infraestructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<AssignPatient> builder)
         {
-            builder.Property(e => e.Id).ValueGeneratedNever();
-
             builder.Property(e => e.IdPatientStatus).HasColumnName("idPatientStatus");
+
+            builder.Property(e => e.IdTriage).HasColumnName("idTriage");
 
             builder.Property(e => e.RegistrationDate).HasColumnType("datetime");
 
@@ -31,6 +31,12 @@ namespace RepublicaDeLosCocos.Infraestructure.Data.Configurations
                 .HasForeignKey(d => d.IdSurgery)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_AssignPatient_Surgery");
+
+            builder.HasOne(d => d.IdTriageNavigation)
+                .WithMany(p => p.AssignPatient)
+                .HasForeignKey(d => d.IdTriage)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_AssignPatient_Triage");
         }
     }
 }
