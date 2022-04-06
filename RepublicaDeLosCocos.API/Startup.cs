@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using RepublicaDeLosCocos.Core.Interfaces;
 using RepublicaDeLosCocos.Infraestructure.Data;
 using RepublicaDeLosCocos.Infraestructure.Filters;
@@ -43,6 +44,11 @@ namespace RepublicaDeLosCocos.API
             services.AddTransient<IAssignPatientRepository, AssignPatientRepository>();
             services.AddTransient<ITreatedRepository, TreatedRepository>();
 
+            services.AddSwaggerGen(doc =>
+            {
+                doc.SwaggerDoc("V1", new OpenApiInfo { Title = "Republica De Los Cocos API", Version = "V1" });
+            });
+
             services.AddMvc(options =>
             {
                 options.Filters.Add<ValidationFilter>();
@@ -62,6 +68,13 @@ namespace RepublicaDeLosCocos.API
             app.UseCors("AllowWebApp");
 
             app.UseHttpsRedirection();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(options => 
+            {
+                options.SwaggerEndpoint("/swagger/V1/swagger.json", "Republica De Los Cocos API V1");
+                options.RoutePrefix = string.Empty;
+            });
 
             app.UseRouting();
 

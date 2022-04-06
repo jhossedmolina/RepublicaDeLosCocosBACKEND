@@ -1,4 +1,6 @@
-﻿namespace RepublicaDeLosCocos.Core.DTOs
+﻿using System;
+
+namespace RepublicaDeLosCocos.Core.DTOs
 {
     public class TreatedDTO
     {
@@ -12,5 +14,6 @@
         public int IdSurgery { get; set; }
         public string SurgeryName { get; set; }
         public string NameDoctor { get; set; }
+        public DateTime RegistrationDate { get; set; }
     }
 }

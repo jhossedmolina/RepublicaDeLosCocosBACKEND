@@ -43,7 +43,6 @@ namespace RepublicaDeLosCocos.Infraestructure.Repositories
                 assignPatient.IdTriage = patient.IdTriage;
                 assignPatient.IdPatientStatus = 2;
                 assignPatient.RegistrationDate = DateTime.Now;
-
                 _context.AssignPatient.Add(assignPatient);
                 await _context.SaveChangesAsync();
             }

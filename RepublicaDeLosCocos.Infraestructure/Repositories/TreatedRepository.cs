@@ -34,6 +34,7 @@ namespace RepublicaDeLosCocos.Infraestructure.Repositories
                     IdTriage = m.asp.asg.IdTriage,
                     Symptom = m.p.Symptom,
                     IdPatientStatus = m.asp.asg.IdPatientStatus,
+                    RegistrationDate = m.asp.asg.RegistrationDate
                 }).ToListAsync();
             return queryTreated;
         }
