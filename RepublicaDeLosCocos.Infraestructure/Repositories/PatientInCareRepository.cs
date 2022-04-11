@@ -8,21 +8,21 @@ using System.Threading.Tasks;
 
 namespace RepublicaDeLosCocos.Infraestructure.Repositories
 {
-    public class TreatedRepository : ITreatedRepository
+    public class PatientInCareRepository : IPatientInCareRepository
     {
         private readonly RepublicaDeLosCocosDBContext _context;
 
-        public TreatedRepository(RepublicaDeLosCocosDBContext context)
+        public PatientInCareRepository(RepublicaDeLosCocosDBContext context)
         {
             _context = context;
         }
 
-        public async Task<IEnumerable<Treated>> GetPatientsAssigned()
+        public async Task<IEnumerable<PatientInCare>> GetPatientsAssigned()
         {
             var queryTreated = await _context.AssignPatient
                 .Join(_context.Surgery, asg => asg.IdSurgery, s => s.Id, (asg, s) => new { asg, s })
                 .Join(_context.Patient, asp => asp.asg.IdPatient, p => p.Id, (asp, p) => new { asp, p })
-                .Select(m => new Treated
+                .Select(m => new PatientInCare
                 {
                     IdSurgery = m.asp.asg.IdSurgery,
                     SurgeryName = m.asp.s.SurgeryName,

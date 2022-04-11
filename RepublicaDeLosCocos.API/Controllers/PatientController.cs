@@ -28,7 +28,7 @@ namespace RepublicaDeLosCocos.API.Controllers
             var patientsDto = _mapper.Map<IEnumerable<PatientDTO>>(patients);
 
             var response = new ApiResponse<IEnumerable<PatientDTO>>(patientsDto);
-            return Ok(patientsDto);
+            return Ok(response);
         }
 
         [HttpGet("{id}")]
@@ -62,9 +62,5 @@ namespace RepublicaDeLosCocos.API.Controllers
             var response = new ApiResponse<bool>(result);
             return Ok(response);
         }
-
-
-
-
     }
 }

@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 
 namespace RepublicaDeLosCocos.Core.Interfaces
 {
-    public interface ITreatedRepository
+    public interface IPatientInCareRepository
     {
-        Task<IEnumerable<Treated>> GetPatientsAssigned();
+        Task<IEnumerable<PatientInCare>> GetPatientsAssigned();
     }
 }

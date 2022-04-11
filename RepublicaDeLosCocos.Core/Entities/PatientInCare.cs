@@ -2,7 +2,7 @@
 
 namespace RepublicaDeLosCocos.Core.Entities
 {
-    public class Treated
+    public class PatientInCare
     {
         public int IdPatient { get; set; }
         public string FullName { get; set; }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using RepublicaDeLosCocos.API.Responses;
 using RepublicaDeLosCocos.Core.DTOs;
 using RepublicaDeLosCocos.Core.Interfaces;
 using System.Collections.Generic;
@@ -9,12 +10,12 @@ namespace RepublicaDeLosCocos.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TreatedController : ControllerBase
+    public class PatientInCareController : ControllerBase
     {
-        private readonly ITreatedRepository _treatedRepository;
+        private readonly IPatientInCareRepository _treatedRepository;
         private readonly IMapper _mapper;
 
-        public TreatedController(ITreatedRepository treatedRepository, IMapper mapper)
+        public PatientInCareController(IPatientInCareRepository treatedRepository, IMapper mapper)
         {
             _treatedRepository = treatedRepository;
             _mapper = mapper;
@@ -24,8 +25,10 @@ namespace RepublicaDeLosCocos.API.Controllers
         public async Task<IActionResult> GetPatients()
         {
             var treateds = await _treatedRepository.GetPatientsAssigned();
-            var treatedsDTO = _mapper.Map<IEnumerable<TreatedDTO>>(treateds);
-            return Ok(treatedsDTO);
+            var treatedsDTO = _mapper.Map<IEnumerable<PatientInCareDTO>>(treateds);
+
+            var response = new ApiResponse<IEnumerable<PatientInCareDTO>>(treatedsDTO);
+            return Ok(response);
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace RepublicaDeLosCocos.Core.DTOs
 {
-    public class TreatedDTO
+    public class PatientInCareDTO
     {
         public int IdPatient { get; set; }
         public string FullName { get; set; }
