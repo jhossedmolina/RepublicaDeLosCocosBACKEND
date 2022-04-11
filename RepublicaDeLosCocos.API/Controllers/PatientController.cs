@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using RepublicaDeLosCocos.API.Responses;
 using RepublicaDeLosCocos.Core.DTOs;
 using RepublicaDeLosCocos.Core.Entities;
 using RepublicaDeLosCocos.Core.Interfaces;
@@ -26,6 +27,7 @@ namespace RepublicaDeLosCocos.API.Controllers
             var patients = await _patientRepository.GetPatients();
             var patientsDto = _mapper.Map<IEnumerable<PatientDTO>>(patients);
 
+            var response = new ApiResponse<IEnumerable<PatientDTO>>(patientsDto);
             return Ok(patientsDto);
         }
 
@@ -34,7 +36,9 @@ namespace RepublicaDeLosCocos.API.Controllers
         {
             var patient = await _patientRepository.GetPatient(id);
             var patientDto = _mapper.Map<PatientDTO>(patient);
-            return Ok(patientDto);
+
+            var response = new ApiResponse<PatientDTO>(patientDto);
+            return Ok(response);
         }
 
         [HttpPost]
@@ -42,7 +46,25 @@ namespace RepublicaDeLosCocos.API.Controllers
         {
             var patient = _mapper.Map<Patient>(patientDto);
             await _patientRepository.InsertPatient(patient);
-            return Ok(patient);
+
+            patientDto = _mapper.Map<PatientDTO>(patient);
+
+            var response = new ApiResponse<PatientDTO>(patientDto);
+            return Ok(response);
         }
+
+        [HttpPut]
+        public async Task<IActionResult> PutPatient(int id, PatientDTO patientDto)
+        {
+            var patient = _mapper.Map<Patient>(patientDto);
+            var result = await _patientRepository.UpdatePatient(patient);
+
+            var response = new ApiResponse<bool>(result);
+            return Ok(response);
+        }
+
+
+
+
     }
 }

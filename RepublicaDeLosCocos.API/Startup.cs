@@ -43,6 +43,8 @@ namespace RepublicaDeLosCocos.API
             services.AddTransient<ISurgeryRepository, SurgeryRepository>();
             services.AddTransient<IAssignPatientRepository, AssignPatientRepository>();
             services.AddTransient<ITreatedRepository, TreatedRepository>();
+            services.AddTransient<IPatientTestRepository, PatientTestRepository>();
+
 
             services.AddSwaggerGen(doc =>
             {

@@ -31,8 +31,8 @@ namespace RepublicaDeLosCocos.Infraestructure.Validators
                 .NotNull()
                 .Length(15, 500);
 
-            RuleFor(patient => patient.CheckIn)
-                .Equal(DateTime.Now);
+            /*RuleFor(patient => patient.CheckIn)
+                .Equal(DateTime.Now);*/
         }
     }
 }

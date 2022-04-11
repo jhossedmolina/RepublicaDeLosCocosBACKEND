@@ -22,10 +22,25 @@ namespace RepublicaDeLosCocos.Infraestructure.Repositories
             return surgerys;
         }
 
+        public async Task<Surgery> GetSurgery(int id)
+        {
+            var surgery = await _context.Surgery.FirstOrDefaultAsync(x => x.Id == id);
+            return surgery;
+        }
+
         public async Task InsertSurgery(Surgery surgery)
         {
             _context.Surgery.Add(surgery);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<bool> DeleteSurgery(int id)
+        {
+            var currentSurgery = await GetSurgery(id);
+            _context.Surgery.RemoveRange(currentSurgery);
+
+            int rows = await _context.SaveChangesAsync();
+            return rows > 0;
         }
     }
 }
