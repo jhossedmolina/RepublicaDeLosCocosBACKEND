@@ -43,12 +43,11 @@ namespace RepublicaDeLosCocos.Infraestructure.Repositories
         public async Task<bool> UpdatePatient(int id, UnrecoveredPatient patient)
         {
             var currentPatient = await GetPatient(id);
-            if (currentPatient.IdPatientStatus == 2)
-            {
-                currentPatient.IdTriage = patient.IdTriage;
-                currentPatient.IdPatientStatus = 1;
-                currentPatient.CheckIn = DateTime.Now;
-            }
+
+            currentPatient.IdTriage = patient.IdTriage;
+            currentPatient.IdPatientStatus = 1;
+            currentPatient.CheckIn = DateTime.Now;
+            
             int rows = await _context.SaveChangesAsync();
             return rows > 0;
         }

@@ -19,7 +19,7 @@ namespace RepublicaDeLosCocos.Infraestructure.Repositories
 
         public async Task<IEnumerable<PatientInCare>> GetPatientsAssigned()
         {
-            var queryTreated = await _context.AssignPatient
+            var queryAssigned = await _context.AssignPatient
                 .Join(_context.Surgery, asg => asg.IdSurgery, s => s.Id, (asg, s) => new { asg, s })
                 .Join(_context.Patient, asp => asp.asg.IdPatient, p => p.Id, (asp, p) => new { asp, p })
                 .Select(m => new PatientInCare
@@ -36,7 +36,7 @@ namespace RepublicaDeLosCocos.Infraestructure.Repositories
                     IdPatientStatus = m.asp.asg.IdPatientStatus,
                     RegistrationDate = m.asp.asg.RegistrationDate
                 }).ToListAsync();
-            return queryTreated;
+            return queryAssigned;
         }
     }
 }
