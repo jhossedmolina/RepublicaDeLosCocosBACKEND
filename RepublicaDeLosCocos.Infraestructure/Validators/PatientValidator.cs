@@ -25,11 +25,11 @@ namespace RepublicaDeLosCocos.Infraestructure.Validators
 
             RuleFor(patient => patient.Gender)
                 .NotNull()
-                .Length(9, 15);
+                .Length(7, 15);
 
             RuleFor(patient => patient.Symptom)
                 .NotNull()
-                .Length(15, 500);
+                .Length(10, 500);
 
             /*RuleFor(patient => patient.CheckIn)
                 .Equal(DateTime.Now);*/

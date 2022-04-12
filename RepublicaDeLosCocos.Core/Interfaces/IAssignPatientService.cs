@@ -3,9 +3,8 @@ using System.Threading.Tasks;
 
 namespace RepublicaDeLosCocos.Core.Interfaces
 {
-    public interface IAssignPatientRepository
+    public interface IAssignPatientService
     {
         Task<AssignPatient> GetPatient(int id);
-        Task InsertAssignedPatient(AssignPatient assignPatient);
     }
 }

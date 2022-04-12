@@ -3,6 +3,7 @@ using RepublicaDeLosCocos.Core.Entities;
 using RepublicaDeLosCocos.Core.Interfaces;
 using RepublicaDeLosCocos.Infraestructure.Data;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace RepublicaDeLosCocos.Infraestructure.Repositories

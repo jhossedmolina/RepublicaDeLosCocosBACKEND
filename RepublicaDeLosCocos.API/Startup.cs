@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using RepublicaDeLosCocos.Core.Interfaces;
+using RepublicaDeLosCocos.Core.Services;
 using RepublicaDeLosCocos.Infraestructure.Data;
 using RepublicaDeLosCocos.Infraestructure.Filters;
 using RepublicaDeLosCocos.Infraestructure.Repositories;
@@ -39,10 +40,17 @@ namespace RepublicaDeLosCocos.API
                 options.UseSqlServer(Configuration.GetConnectionString("RepublicaDeLosCocosDB"))
             );
 
+            services.AddTransient<IPatientService, PatientService>();
             services.AddTransient<IPatientRepository, PatientRepository>();
+
+            services.AddTransient<ISurgeryService, SurgeryService>();
             services.AddTransient<ISurgeryRepository, SurgeryRepository>();
+
+            services.AddTransient<IAssignPatientService, AssignPatientService>();
             services.AddTransient<IAssignPatientRepository, AssignPatientRepository>();
+
             services.AddTransient<IPatientInCareRepository, PatientInCareRepository>();
+            
             
 
 

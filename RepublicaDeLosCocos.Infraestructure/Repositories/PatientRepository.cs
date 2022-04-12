@@ -20,9 +20,8 @@ namespace RepublicaDeLosCocos.Infraestructure.Repositories
         
         public async Task<IEnumerable<Patient>> GetPatients()
         {
-            int patientStatus = 1;
             var patients = await _context.Patient
-                    .Where(ps => ps.IdPatientStatus.Equals(patientStatus))
+                    .Where(ps => ps.IdPatientStatus.Equals(1))
                     .OrderBy(t => t.IdTriage)
                     .ThenBy(t => t.CheckIn)
                     .ToListAsync();
@@ -37,17 +36,15 @@ namespace RepublicaDeLosCocos.Infraestructure.Repositories
 
         public async Task InsertPatient(Patient patient)
         {
-            patient.IdPatientStatus = 1;
-            if (patient.CheckIn == null) patient.CheckIn = DateTime.Now;
             _context.Patient.Add(patient);
             await _context.SaveChangesAsync();
         }
 
-        public async Task<bool> UpdatePatient(Patient patient)
+        public async Task<bool> UpdatePatient(int id, UnrecoveredPatient patient)
         {
-            if (patient.IdPatientStatus == 2)
+            var currentPatient = await GetPatient(id);
+            if (currentPatient.IdPatientStatus == 2)
             {
-                var currentPatient = await GetPatient(patient.Id);
                 currentPatient.IdTriage = patient.IdTriage;
                 currentPatient.IdPatientStatus = 1;
                 currentPatient.CheckIn = DateTime.Now;
@@ -56,8 +53,14 @@ namespace RepublicaDeLosCocos.Infraestructure.Repositories
             return rows > 0;
         }
 
-
-
-
+        public Patient FirstPatient()
+        {
+            var queryPatient = _context.Patient
+                 .Where(ps => ps.IdPatientStatus.Equals(1))
+                 .OrderBy(t => t.IdTriage)
+                 .ThenBy(t => t.CheckIn);
+            var patient = queryPatient.FirstOrDefault();
+            return patient;
+        }
     }
 }

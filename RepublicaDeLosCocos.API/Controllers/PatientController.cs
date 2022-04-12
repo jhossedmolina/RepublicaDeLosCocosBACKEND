@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using RepublicaDeLosCocos.API.Responses;
 using RepublicaDeLosCocos.Core.DTOs;
@@ -13,18 +14,18 @@ namespace RepublicaDeLosCocos.API.Controllers
     [ApiController]
     public class PatientController : ControllerBase
     {
-        private readonly IPatientRepository _patientRepository;
+        private readonly IPatientService _patientService;
         private readonly IMapper _mapper; 
-        public PatientController(IPatientRepository patientRepository, IMapper mapper)
+        public PatientController(IPatientService patientService, IMapper mapper)
         {
-            _patientRepository = patientRepository;
+            _patientService = patientService;
             _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetPatients()
         {
-            var patients = await _patientRepository.GetPatients();
+            var patients = await _patientService.GetPatients();
             var patientsDto = _mapper.Map<IEnumerable<PatientDTO>>(patients);
 
             var response = new ApiResponse<IEnumerable<PatientDTO>>(patientsDto);
@@ -34,7 +35,7 @@ namespace RepublicaDeLosCocos.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPatient(int id)
         {
-            var patient = await _patientRepository.GetPatient(id);
+            var patient = await _patientService.GetPatient(id);
             var patientDto = _mapper.Map<PatientDTO>(patient);
 
             var response = new ApiResponse<PatientDTO>(patientDto);
@@ -45,7 +46,7 @@ namespace RepublicaDeLosCocos.API.Controllers
         public async Task<IActionResult> PostPatient(PatientDTO patientDto)
         {
             var patient = _mapper.Map<Patient>(patientDto);
-            await _patientRepository.InsertPatient(patient);
+            await _patientService.InsertPatient(patient);
 
             patientDto = _mapper.Map<PatientDTO>(patient);
 
@@ -54,10 +55,10 @@ namespace RepublicaDeLosCocos.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> PutPatient(int id, PatientDTO patientDto)
+        public async Task<IActionResult> PutPatient(int id, UnrecoveredPatientDTO patientDto)
         {
-            var patient = _mapper.Map<Patient>(patientDto);
-            var result = await _patientRepository.UpdatePatient(patient);
+            var patient = _mapper.Map<UnrecoveredPatient>(patientDto);
+            var result = await _patientService.UpdatePatient(id, patient);
 
             var response = new ApiResponse<bool>(result);
             return Ok(response);

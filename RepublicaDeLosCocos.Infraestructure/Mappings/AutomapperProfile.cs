@@ -12,6 +12,7 @@ namespace RepublicaDeLosCocos.Infraestructure.Mappings
             CreateMap<Surgery, SurgeryDTO>().ReverseMap();
             CreateMap<AssignPatient, AssignPatientDTO>().ReverseMap();
             CreateMap<PatientInCare, PatientInCareDTO>().ReverseMap();
+            CreateMap<UnrecoveredPatient, UnrecoveredPatientDTO>().ReverseMap();
         }
     }
 }

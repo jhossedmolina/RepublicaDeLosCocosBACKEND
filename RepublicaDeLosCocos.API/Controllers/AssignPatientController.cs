@@ -11,19 +11,19 @@ namespace RepublicaDeLosCocos.API.Controllers
     [ApiController]
     public class AssignPatientController : ControllerBase
     {
-        private readonly IAssignPatientRepository _assignPatientRepository;
+        private readonly IAssignPatientService _assignPatientService;
         private readonly IMapper _mapper;
 
-        public AssignPatientController(IAssignPatientRepository assignPatientRepository, IMapper mapper)
+        public AssignPatientController(IAssignPatientService assignPatientService, IMapper mapper)
         {
-            _assignPatientRepository = assignPatientRepository;
+            _assignPatientService = assignPatientService;
             _mapper = mapper;
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetAssignPAtient(int id)
+       [HttpGet("{id}")]
+        public async Task<IActionResult> GetAssignPatient(int id)
         {
-            var assign = await _assignPatientRepository.GetPatient(id);
+            var assign = await _assignPatientService.GetPatient(id);
             var assignPatientDto = _mapper.Map<AssignPatientDTO>(assign);
 
             var response = new ApiResponse<AssignPatientDTO>(assignPatientDto);

@@ -4,12 +4,11 @@ using System.Threading.Tasks;
 
 namespace RepublicaDeLosCocos.Core.Interfaces
 {
-    public interface IPatientRepository
+    public interface IPatientService
     {
         Task<IEnumerable<Patient>> GetPatients();
         Task<Patient> GetPatient(int id);
         Task InsertPatient(Patient patient);
         Task<bool> UpdatePatient(int id, UnrecoveredPatient patient);
-        Patient FirstPatient();
     }
 }
