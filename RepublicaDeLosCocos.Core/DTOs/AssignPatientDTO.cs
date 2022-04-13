@@ -7,7 +7,6 @@ namespace RepublicaDeLosCocos.Core.DTOs
         public int IdSurgery { get; set; }
         public int IdPatient { get; set; }
         public int IdTriage { get; set; }
-        public int IdPatientStatus { get; set; }
         public DateTime RegistrationDate { get; set; }
     }
 }

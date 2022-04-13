@@ -8,11 +8,10 @@ namespace RepublicaDeLosCocos.Core.Entities
         public int IdSurgery { get; set; }
         public int IdPatient { get; set; }
         public int IdTriage { get; set; }
-        public int IdPatientStatus { get; set; }
         public DateTime RegistrationDate { get; set; }
+        public string Diagnostic { get; set; }
 
         public virtual Patient IdPatientNavigation { get; set; }
-        public virtual PatientStatus IdPatientStatusNavigation { get; set; }
         public virtual Surgery IdSurgeryNavigation { get; set; }
         public virtual Triage IdTriageNavigation { get; set; }
     }

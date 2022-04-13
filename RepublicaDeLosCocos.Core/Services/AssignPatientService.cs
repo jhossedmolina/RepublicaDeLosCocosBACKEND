@@ -36,7 +36,6 @@ namespace RepublicaDeLosCocos.Core.Services
                 assignPatient.IdSurgery = getSurgery.Id;
                 assignPatient.IdPatient = patient.Id;
                 assignPatient.IdTriage = patient.IdTriage;
-                assignPatient.IdPatientStatus = 2;
                 assignPatient.RegistrationDate = DateTime.Now;
 
                 await _assignPatientRepository.InsertAssignedPatient(assignPatient);

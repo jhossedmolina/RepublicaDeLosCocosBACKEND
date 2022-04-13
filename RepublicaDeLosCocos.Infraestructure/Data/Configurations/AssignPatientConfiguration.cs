@@ -8,7 +8,9 @@ namespace RepublicaDeLosCocos.Infraestructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<AssignPatient> builder)
         {
-            builder.Property(e => e.IdPatientStatus).HasColumnName("idPatientStatus");
+            builder.Property(e => e.Diagnostic)
+                .HasMaxLength(100)
+                .IsUnicode(false);
 
             builder.Property(e => e.IdTriage).HasColumnName("idTriage");
 
@@ -19,12 +21,6 @@ namespace RepublicaDeLosCocos.Infraestructure.Data.Configurations
                 .HasForeignKey(d => d.IdPatient)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_AssignPatient_Patient");
-
-            builder.HasOne(d => d.IdPatientStatusNavigation)
-                .WithMany(p => p.AssignPatient)
-                .HasForeignKey(d => d.IdPatientStatus)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_AssignPatient_PatientStatus");
 
             builder.HasOne(d => d.IdSurgeryNavigation)
                 .WithMany(p => p.AssignPatient)
