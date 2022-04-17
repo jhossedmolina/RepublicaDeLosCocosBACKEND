@@ -13,19 +13,19 @@ namespace RepublicaDeLosCocos.API.Controllers
     [ApiController]
     public class SurgeryController : ControllerBase
     {
-        private readonly ISurgeryRepository _surgeryRepository;
+        private readonly ISurgeryService _surgeryService;
         private readonly IMapper _mapper;
 
-        public SurgeryController(ISurgeryRepository surgeryRepository, IMapper mapper)
+        public SurgeryController(ISurgeryService surgeryService, IMapper mapper)
         {
-            _surgeryRepository = surgeryRepository;
+            _surgeryService = surgeryService;
             _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetSurgerys()
         {
-            var surgerys = await _surgeryRepository.GetSurgerys();
+            var surgerys = await _surgeryService.GetSurgerys();
             var surgerysDTO = _mapper.Map<IEnumerable<SurgeryDTO>>(surgerys);
 
             var response = new ApiResponse<IEnumerable<SurgeryDTO>>(surgerysDTO);
@@ -35,7 +35,7 @@ namespace RepublicaDeLosCocos.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetSurgery(int id)
         {
-            var surgery = await _surgeryRepository.GetSurgery(id);
+            var surgery = await _surgeryService.GetSurgery(id);
             var surgeryDTO = _mapper.Map<SurgeryDTO>(surgery);
 
             var response = new ApiResponse<SurgeryDTO>(surgeryDTO);
@@ -47,7 +47,7 @@ namespace RepublicaDeLosCocos.API.Controllers
         {
             var surgery = _mapper.Map<Surgery>(surgeryDTO);
 
-            await _surgeryRepository.InsertSurgery(surgery);
+            await _surgeryService.InsertSurgery(surgery);
 
             surgeryDTO = _mapper.Map<SurgeryDTO>(surgery);
             var response = new ApiResponse<SurgeryDTO>(surgeryDTO);
@@ -57,7 +57,7 @@ namespace RepublicaDeLosCocos.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteSurgery(int id)
         {
-            var result = await _surgeryRepository.DeleteSurgery(id);
+            var result = await _surgeryService.DeleteSurgery(id);
 
             var response = new ApiResponse<bool>(result);
             return Ok(response);

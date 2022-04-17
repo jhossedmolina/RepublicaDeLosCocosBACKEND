@@ -49,6 +49,7 @@ namespace RepublicaDeLosCocos.API
             services.AddTransient<IAssignPatientService, AssignPatientService>();
             services.AddTransient<IAssignPatientRepository, AssignPatientRepository>();
 
+            services.AddTransient<IPatientInCareService, PatientInCareService>();
             services.AddTransient<IPatientInCareRepository, PatientInCareRepository>();
 
             services.AddTransient<IRecoveredPatientService, RecoveredPatientService>();

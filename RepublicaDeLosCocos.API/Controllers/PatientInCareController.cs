@@ -12,19 +12,19 @@ namespace RepublicaDeLosCocos.API.Controllers
     [ApiController]
     public class PatientInCareController : ControllerBase
     {
-        private readonly IPatientInCareRepository _patientInCareRepository;
+        private readonly IPatientInCareService _patientInCareService;
         private readonly IMapper _mapper;
 
-        public PatientInCareController(IPatientInCareRepository patientInCareRepository, IMapper mapper)
+        public PatientInCareController(IPatientInCareService patientInCareService, IMapper mapper)
         {
-            _patientInCareRepository = patientInCareRepository;
+            _patientInCareService = patientInCareService;
             _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetPatients()
         {
-            var assigneds = await _patientInCareRepository.GetPatientsAssigned();
+            var assigneds = await _patientInCareService.GetPatientsAssigned();
             var assignedsDTO = _mapper.Map<IEnumerable<PatientInCareDTO>>(assigneds);
 
             var response = new ApiResponse<IEnumerable<PatientInCareDTO>>(assignedsDTO);
