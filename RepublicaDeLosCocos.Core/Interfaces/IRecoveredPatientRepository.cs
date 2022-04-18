@@ -7,5 +7,6 @@ namespace RepublicaDeLosCocos.Core.Interfaces
     public interface IRecoveredPatientRepository
     {
         Task<IEnumerable<Patient>> GetRecoveredPatients();
+        Task<bool> RecoveredPatient(int id);
     }
 }

@@ -26,5 +26,14 @@ namespace RepublicaDeLosCocos.Infraestructure.Repositories
             .ToListAsync();
             return recoveredPatients;
         }
+
+        public async Task<bool> RecoveredPatient(int id)
+        {
+            var currentPatient = await _context.Patient.FirstOrDefaultAsync(x => x.Id == id);
+            currentPatient.IdPatientStatus = 3;
+
+            int rows = await _context.SaveChangesAsync();
+            return rows > 0;
+        }
     }
 }

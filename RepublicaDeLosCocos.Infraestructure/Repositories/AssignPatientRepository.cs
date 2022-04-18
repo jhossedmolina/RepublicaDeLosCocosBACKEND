@@ -2,6 +2,7 @@
 using RepublicaDeLosCocos.Core.Entities;
 using RepublicaDeLosCocos.Core.Interfaces;
 using RepublicaDeLosCocos.Infraestructure.Data;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace RepublicaDeLosCocos.Infraestructure.Repositories
@@ -24,6 +25,14 @@ namespace RepublicaDeLosCocos.Infraestructure.Repositories
         {
             _context.AssignPatient.Add(assignPatient);
             await _context.SaveChangesAsync();
+        }
+
+        public AssignPatient CurrentSurgery(int id)
+        {
+            var querySurgery = _context.AssignPatient.Where(x => x.IdPatient == id).OrderByDescending(r => r.RegistrationDate);
+            var surgery = querySurgery.FirstOrDefault();
+            
+            return surgery;
         }
     }
 }

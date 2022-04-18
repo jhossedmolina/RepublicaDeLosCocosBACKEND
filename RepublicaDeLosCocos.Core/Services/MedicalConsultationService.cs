@@ -9,13 +9,11 @@ namespace RepublicaDeLosCocos.Core.Services
     {
         private readonly IMedicalConsultationRepository _medicalConsultationRepository;
         private readonly IPatientRepository _patientRepository;
-        private readonly IPatientInCareRepository _patientInCareRepository;
 
-        public MedicalConsultationService(IPatientRepository patientRepository, IMedicalConsultationRepository medicalConsultationRepository, IPatientInCareRepository patientInCareRepository)
+        public MedicalConsultationService(IPatientRepository patientRepository, IMedicalConsultationRepository medicalConsultationRepository)
         {
             _patientRepository = patientRepository;
             _medicalConsultationRepository = medicalConsultationRepository;
-            _patientInCareRepository = patientInCareRepository;
         }
 
         public async Task<bool> UpdatePatientDiagnostic(int id, PatientDiagnostic patientDiagnostic)
@@ -25,9 +23,7 @@ namespace RepublicaDeLosCocos.Core.Services
             {
                 throw new Exception($"El Paciente {currentPatient.Id} {currentPatient.FullName} No Ha Sido Atendido Por Ningun Doctor, Por Lo Tanto No Puede Cambiar El Triage");
             }
-
-
-
+               
             return await _medicalConsultationRepository.UpdatePatientDiagnostic(id, patientDiagnostic);
         }
     }

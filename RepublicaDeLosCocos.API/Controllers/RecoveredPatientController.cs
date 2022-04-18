@@ -30,5 +30,14 @@ namespace RepublicaDeLosCocos.API.Controllers
             var response = new ApiResponse<IEnumerable<PatientDTO>>(recoveredPatientsDto);
             return Ok(response);
         }
+
+        [HttpPut]
+        public async Task<IActionResult> RecoveredPatient(int id)
+        {
+            var result = await _recoveredPatientService.RecoveredPatient(id);
+
+            var response = new ApiResponse<bool>(result);
+            return Ok(response);
+        }
     }
 }
