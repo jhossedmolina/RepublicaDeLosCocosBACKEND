@@ -35,7 +35,8 @@ namespace RepublicaDeLosCocos.Infraestructure.Repositories
                     IdTriage = m.asp.asg.IdTriage,
                     Symptom = m.p.Symptom,
                     IdPatientStatus = m.p.IdPatientStatus,
-                    RegistrationDate = m.asp.asg.RegistrationDate
+                    RegistrationDate = m.asp.asg.RegistrationDate,
+                    Diagnostic = m.asp.asg.Diagnostic
                 }).ToListAsync();
             var Assigneds = queryAssigned.GroupBy(x => x.IdPatient).Select(y => y.Last());
             return Assigneds;

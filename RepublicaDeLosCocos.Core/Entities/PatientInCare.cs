@@ -15,5 +15,6 @@ namespace RepublicaDeLosCocos.Core.Entities
         public string SurgeryName { get; set; }
         public string NameDoctor { get; set; }
         public DateTime RegistrationDate { get; set; }
+        public string Diagnostic { get; set; }
     }
 }

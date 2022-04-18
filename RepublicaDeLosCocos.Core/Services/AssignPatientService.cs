@@ -1,8 +1,6 @@
 ﻿using RepublicaDeLosCocos.Core.Entities;
 using RepublicaDeLosCocos.Core.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace RepublicaDeLosCocos.Core.Services
@@ -24,7 +22,6 @@ namespace RepublicaDeLosCocos.Core.Services
         {
             AssignPatient assignPatient = new AssignPatient();
             var getSurgery = await _surgeryRepository.GetSurgery(id);
-            var getSurgerys = await _surgeryRepository.GetSurgerys();
             
             if(getSurgery != null && getSurgery.IdSurgeryStatus == 1)
             {

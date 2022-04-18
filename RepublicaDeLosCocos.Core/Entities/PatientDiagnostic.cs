@@ -1,6 +1,6 @@
 ﻿namespace RepublicaDeLosCocos.Core.Entities
 {
-    public class UnrecoveredPatient : Patient
+    public class PatientDiagnostic : AssignPatient
     {
     }
 }

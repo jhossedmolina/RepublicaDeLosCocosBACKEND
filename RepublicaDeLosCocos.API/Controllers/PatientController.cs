@@ -54,10 +54,10 @@ namespace RepublicaDeLosCocos.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> PutPatient(int id, UnrecoveredPatientDTO patientDto)
+        public async Task<IActionResult> PutPatientTriage(int id, UnrecoveredPatientDTO unrecoveredPatientDTO)
         {
-            var patient = _mapper.Map<UnrecoveredPatient>(patientDto);
-            var result = await _patientService.UpdatePatient(id, patient);
+            var patient = _mapper.Map<UnrecoveredPatient>(unrecoveredPatientDTO);
+            var result = await _patientService.UpdatePatientTriage(id, patient);
 
             var response = new ApiResponse<bool>(result);
             return Ok(response);

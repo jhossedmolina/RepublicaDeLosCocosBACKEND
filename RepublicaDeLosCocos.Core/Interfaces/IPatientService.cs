@@ -9,6 +9,6 @@ namespace RepublicaDeLosCocos.Core.Interfaces
         Task<IEnumerable<Patient>> GetPatients();
         Task<Patient> GetPatient(int id);
         Task InsertPatient(Patient patient);
-        Task<bool> UpdatePatient(int id, UnrecoveredPatient patient);
+        Task<bool> UpdatePatientTriage(int id, UnrecoveredPatient patient);
     }
 }

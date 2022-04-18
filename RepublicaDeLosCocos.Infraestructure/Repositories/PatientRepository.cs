@@ -40,14 +40,14 @@ namespace RepublicaDeLosCocos.Infraestructure.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<bool> UpdatePatient(int id, UnrecoveredPatient patient)
+        public async Task<bool> UpdatePatientTriage(int id, UnrecoveredPatient unrecoveredPatient)
         {
-            var currentPatient = await GetPatient(id);
+            var currentPatient = await _context.Patient.FirstOrDefaultAsync(x => x.Id == id);
 
-            currentPatient.IdTriage = patient.IdTriage;
+            currentPatient.IdTriage = unrecoveredPatient.IdTriage;
             currentPatient.IdPatientStatus = 1;
             currentPatient.CheckIn = DateTime.Now;
-            
+
             int rows = await _context.SaveChangesAsync();
             return rows > 0;
         }
