@@ -10,7 +10,6 @@ namespace RepublicaDeLosCocos.Core.DTOs
         public string Gender { get; set; }
         public string Symptom { get; set; }
         public int IdTriage { get; set; }
-        public int IdPatientStatus { get; set; }
         public int IdSurgery { get; set; }
         public string SurgeryName { get; set; }
         public string NameDoctor { get; set; }

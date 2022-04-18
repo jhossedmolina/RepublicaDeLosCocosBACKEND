@@ -34,7 +34,6 @@ namespace RepublicaDeLosCocos.Infraestructure.Repositories
                     Gender = m.p.Gender,
                     IdTriage = m.asp.asg.IdTriage,
                     Symptom = m.p.Symptom,
-                    IdPatientStatus = m.p.IdPatientStatus,
                     RegistrationDate = m.asp.asg.RegistrationDate,
                     Diagnostic = m.asp.asg.Diagnostic
                 }).ToListAsync();
