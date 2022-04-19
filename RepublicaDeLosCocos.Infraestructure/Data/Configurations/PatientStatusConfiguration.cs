@@ -8,6 +8,8 @@ namespace RepublicaDeLosCocos.Infraestructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<PatientStatus> builder)
         {
+            builder.Property(e => e.Id).ValueGeneratedNever();
+
             builder.Property(e => e.StatusName)
                 .IsRequired()
                 .HasMaxLength(20)

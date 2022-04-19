@@ -1,9 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using RepublicaDeLosCocos.Core.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace RepublicaDeLosCocos.Infraestructure.Data.Configurations
 {
@@ -11,7 +8,7 @@ namespace RepublicaDeLosCocos.Infraestructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Triage> builder)
         {
-            builder.Property(e => e.Id).HasColumnName("id");
+            builder.Property(e => e.Id).ValueGeneratedNever();
 
             builder.Property(e => e.TriageName)
                 .IsRequired()

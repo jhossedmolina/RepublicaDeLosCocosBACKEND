@@ -1,8 +1,8 @@
 ﻿namespace RepublicaDeLosCocos.Core.DTOs
 {
-    public class TriageDTO
+    public class PatientStatusDTO
     {
         public int Id { get; set; }
-        public string TriageName { get; set; }
+        public string StatusName { get; set; }
     }
 }

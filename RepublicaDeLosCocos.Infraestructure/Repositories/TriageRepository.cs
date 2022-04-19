@@ -2,9 +2,7 @@
 using RepublicaDeLosCocos.Core.Entities;
 using RepublicaDeLosCocos.Core.Interfaces;
 using RepublicaDeLosCocos.Infraestructure.Data;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace RepublicaDeLosCocos.Infraestructure.Repositories
@@ -20,8 +18,8 @@ namespace RepublicaDeLosCocos.Infraestructure.Repositories
 
         public async Task<IEnumerable<Triage>> GetTriages()
         {
-            var patients = await _context.Triage.ToListAsync();
-            return patients;
+            var triages = await _context.Triage.ToListAsync();
+            return triages;
         }
 
         public async Task InsertTriage(Triage triage)
