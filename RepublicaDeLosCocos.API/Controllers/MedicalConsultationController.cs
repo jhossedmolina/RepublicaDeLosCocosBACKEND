@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using RepublicaDeLosCocos.API.Responses;
 using RepublicaDeLosCocos.Core.DTOs;
 using RepublicaDeLosCocos.Core.Entities;
 using RepublicaDeLosCocos.Core.Interfaces;
@@ -26,8 +25,8 @@ namespace RepublicaDeLosCocos.API.Controllers
             var diagnostic = _mapper.Map<PatientDiagnostic>(patientDiagnosticDTO);
             var result = await _medicalConsultationService.UpdatePatientDiagnostic(id, diagnostic);
 
-            var response = new ApiResponse<bool>(result);
-            return Ok(response);
+            //var response = new ApiResponse<bool>(result);
+            return Ok(result);
         }
     }
 }

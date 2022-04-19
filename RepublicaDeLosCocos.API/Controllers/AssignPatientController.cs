@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using RepublicaDeLosCocos.API.Responses;
 using RepublicaDeLosCocos.Core.DTOs;
 using RepublicaDeLosCocos.Core.Interfaces;
 using System.Threading.Tasks;
@@ -26,8 +25,8 @@ namespace RepublicaDeLosCocos.API.Controllers
             var assign = await _assignPatientService.GetPatient(id);
             var assignPatientDto = _mapper.Map<AssignPatientDTO>(assign);
 
-            var response = new ApiResponse<AssignPatientDTO>(assignPatientDto);
-            return Ok(response);
+            //var response = new ApiResponse<AssignPatientDTO>(assignPatientDto);
+            return Ok(assignPatientDto);
         }
     }
 }

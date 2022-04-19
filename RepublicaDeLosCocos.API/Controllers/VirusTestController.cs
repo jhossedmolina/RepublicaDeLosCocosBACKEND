@@ -31,8 +31,8 @@ namespace RepublicaDeLosCocos.API.Controllers
             await _virusTestRepository.InsertTestFile(virusTestFileDTO, id);
 
             virusTestFileDTO = _mapper.Map<VirusTestFileDTO>(testFIle);
-            var response = new ApiResponse<VirusTestFileDTO>(virusTestFileDTO);
-            return Ok(response);
+            //var response = new ApiResponse<VirusTestFileDTO>(virusTestFileDTO);
+            return Ok(virusTestFileDTO);
         }
     }
 }

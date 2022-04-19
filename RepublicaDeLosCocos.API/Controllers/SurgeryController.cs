@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using RepublicaDeLosCocos.API.Responses;
 using RepublicaDeLosCocos.Core.DTOs;
 using RepublicaDeLosCocos.Core.Entities;
 using RepublicaDeLosCocos.Core.Interfaces;
@@ -28,8 +27,8 @@ namespace RepublicaDeLosCocos.API.Controllers
             var surgerys = await _surgeryService.GetSurgerys();
             var surgerysDTO = _mapper.Map<IEnumerable<SurgeryDTO>>(surgerys);
 
-            var response = new ApiResponse<IEnumerable<SurgeryDTO>>(surgerysDTO);
-            return Ok(response);
+            //var response = new ApiResponse<IEnumerable<SurgeryDTO>>(surgerysDTO);
+            return Ok(surgerysDTO);
         }
 
         [HttpGet("{id}")]
@@ -38,8 +37,8 @@ namespace RepublicaDeLosCocos.API.Controllers
             var surgery = await _surgeryService.GetSurgery(id);
             var surgeryDTO = _mapper.Map<SurgeryDTO>(surgery);
 
-            var response = new ApiResponse<SurgeryDTO>(surgeryDTO);
-            return Ok(response);
+            //var response = new ApiResponse<SurgeryDTO>(surgeryDTO);
+            return Ok(surgeryDTO);
         }
 
         [HttpPost]
@@ -50,8 +49,8 @@ namespace RepublicaDeLosCocos.API.Controllers
             await _surgeryService.InsertSurgery(surgery);
 
             surgeryDTO = _mapper.Map<SurgeryDTO>(surgery);
-            var response = new ApiResponse<SurgeryDTO>(surgeryDTO);
-            return Ok(response);
+            //var response = new ApiResponse<SurgeryDTO>(surgeryDTO);
+            return Ok(surgeryDTO);
         }
 
         [HttpDelete("{id}")]
@@ -59,8 +58,8 @@ namespace RepublicaDeLosCocos.API.Controllers
         {
             var result = await _surgeryService.DeleteSurgery(id);
 
-            var response = new ApiResponse<bool>(result);
-            return Ok(response);
+            //var response = new ApiResponse<bool>(result);
+            return Ok(result);
         }
     }
 }

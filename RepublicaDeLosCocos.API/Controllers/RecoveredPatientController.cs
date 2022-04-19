@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using RepublicaDeLosCocos.API.Responses;
 using RepublicaDeLosCocos.Core.DTOs;
 using RepublicaDeLosCocos.Core.Interfaces;
 using System.Collections.Generic;
@@ -27,8 +26,8 @@ namespace RepublicaDeLosCocos.API.Controllers
             var recoveredPatients = await _recoveredPatientService.GetRecoveredPatients();
             var recoveredPatientsDto = _mapper.Map<IEnumerable<PatientDTO>>(recoveredPatients);
 
-            var response = new ApiResponse<IEnumerable<PatientDTO>>(recoveredPatientsDto);
-            return Ok(response);
+            //var response = new ApiResponse<IEnumerable<PatientDTO>>(recoveredPatientsDto);
+            return Ok(recoveredPatientsDto);
         }
 
         [HttpPut]
@@ -36,8 +35,8 @@ namespace RepublicaDeLosCocos.API.Controllers
         {
             var result = await _recoveredPatientService.RecoveredPatient(id);
 
-            var response = new ApiResponse<bool>(result);
-            return Ok(response);
+            //var response = new ApiResponse<bool>(result);
+            return Ok(result);
         }
     }
 }
