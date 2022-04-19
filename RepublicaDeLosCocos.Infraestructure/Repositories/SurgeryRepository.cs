@@ -30,6 +30,7 @@ namespace RepublicaDeLosCocos.Infraestructure.Repositories
 
         public async Task InsertSurgery(Surgery surgery)
         {
+            surgery.IdSurgeryStatus = 1;
             _context.Surgery.Add(surgery);
             await _context.SaveChangesAsync();
         }
