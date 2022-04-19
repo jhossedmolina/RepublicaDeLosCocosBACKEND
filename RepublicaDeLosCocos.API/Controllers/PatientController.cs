@@ -27,8 +27,8 @@ namespace RepublicaDeLosCocos.API.Controllers
             var patients = await _patientService.GetPatients();
             var patientsDto = _mapper.Map<IEnumerable<PatientDTO>>(patients);
 
-            var response = new ApiResponse<IEnumerable<PatientDTO>>(patientsDto);
-            return Ok(response);
+            //var response = new ApiResponse<IEnumerable<PatientDTO>>(patientsDto);
+            return Ok(patientsDto);
         }
 
         [HttpGet("{id}")]
@@ -37,8 +37,8 @@ namespace RepublicaDeLosCocos.API.Controllers
             var patient = await _patientService.GetPatient(id);
             var patientDto = _mapper.Map<PatientDTO>(patient);
 
-            var response = new ApiResponse<PatientDTO>(patientDto);
-            return Ok(response);
+            //var response = new ApiResponse<PatientDTO>(patientDto);
+            return Ok(patientDto);
         }
 
         [HttpPost]
@@ -49,8 +49,8 @@ namespace RepublicaDeLosCocos.API.Controllers
 
             patientDto = _mapper.Map<PatientDTO>(patient);
 
-            var response = new ApiResponse<PatientDTO>(patientDto);
-            return Ok(response);
+            //var response = new ApiResponse<PatientDTO>(patientDto);
+            return Ok(patientDto);
         }
 
         [HttpPut]
@@ -59,8 +59,8 @@ namespace RepublicaDeLosCocos.API.Controllers
             var patient = _mapper.Map<UnrecoveredPatient>(unrecoveredPatientDTO);
             var result = await _patientService.UpdatePatientTriage(id, patient);
 
-            var response = new ApiResponse<bool>(result);
-            return Ok(response);
+            //var response = new ApiResponse<bool>(result);
+            return Ok(result);
         }
     }
 }

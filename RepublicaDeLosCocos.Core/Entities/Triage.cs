@@ -18,7 +18,6 @@ namespace RepublicaDeLosCocos.Core.Entities
         public int Id { get; set; }
         public int TriageCode { get; set; }
         public string TriageName { get; set; }
-        public string TriagePriority { get; set; }
 
         public virtual ICollection<AssignPatient> AssignPatient { get; set; }
         public virtual ICollection<Patient> Patient { get; set; }

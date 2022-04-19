@@ -16,6 +16,8 @@ namespace RepublicaDeLosCocos.Infraestructure.Data.Configurations
 
             builder.Property(e => e.RegistrationDate).HasColumnType("datetime");
 
+            builder.Property(e => e.VirusTestFile).HasColumnType("text");
+
             builder.HasOne(d => d.IdPatientNavigation)
                 .WithMany(p => p.AssignPatient)
                 .HasForeignKey(d => d.IdPatient)

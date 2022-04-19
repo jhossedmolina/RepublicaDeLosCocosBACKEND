@@ -10,6 +10,7 @@ namespace RepublicaDeLosCocos.Core.Entities
         public int IdTriage { get; set; }
         public DateTime RegistrationDate { get; set; }
         public string Diagnostic { get; set; }
+        public string VirusTestFile { get; set; }
 
         public virtual Patient IdPatientNavigation { get; set; }
         public virtual Surgery IdSurgeryNavigation { get; set; }

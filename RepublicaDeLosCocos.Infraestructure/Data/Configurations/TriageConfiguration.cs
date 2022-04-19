@@ -17,10 +17,6 @@ namespace RepublicaDeLosCocos.Infraestructure.Data.Configurations
                 .IsRequired()
                 .HasMaxLength(20)
                 .IsUnicode(false);
-
-            builder.Property(e => e.TriagePriority)
-                .HasMaxLength(20)
-                .IsUnicode(false);
         }
     }
 }

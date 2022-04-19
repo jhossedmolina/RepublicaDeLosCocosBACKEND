@@ -57,6 +57,11 @@ namespace RepublicaDeLosCocos.API
 
             services.AddTransient<IMedicalConsultationService, MedicalConsultationService>();
             services.AddTransient<IMedicalConsultationRepository, MedicalConsultationRepository>();
+
+            services.AddTransient<IVirusTestRepository, VirusTestRepository>();
+
+            services.AddTransient<ITriageService, TriageService>();
+            services.AddTransient<ITriageRepository, TriageRepository>();
             
 
 

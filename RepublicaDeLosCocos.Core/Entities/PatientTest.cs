@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace RepublicaDeLosCocos.Core.Entities
 {
-    public class PatientTest
+    public partial class PatientTest
     {
         public int Id { get; set; }
         public int IdPatient { get; set; }
