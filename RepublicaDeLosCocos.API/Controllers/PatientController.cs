@@ -51,15 +51,5 @@ namespace RepublicaDeLosCocos.API.Controllers
             //var response = new ApiResponse<PatientDTO>(patientDto);
             return Ok(patientDto);
         }
-
-        [HttpPut]
-        public async Task<IActionResult> PutPatientTriage(int id, UnrecoveredPatientDTO unrecoveredPatientDTO)
-        {
-            var patient = _mapper.Map<UnrecoveredPatient>(unrecoveredPatientDTO);
-            var result = await _patientService.UpdatePatientTriage(id, patient);
-
-            //var response = new ApiResponse<bool>(result);
-            return Ok(result);
-        }
     }
 }

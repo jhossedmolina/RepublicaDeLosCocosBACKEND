@@ -95,6 +95,7 @@ namespace RepublicaDeLosCocos.API
             }
 
             app.UseCors("AllowWebApp");
+            app.UseStaticFiles();
 
             app.UseHttpsRedirection();
 

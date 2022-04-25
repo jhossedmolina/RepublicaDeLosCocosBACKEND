@@ -2,7 +2,6 @@
 using RepublicaDeLosCocos.Core.Entities;
 using RepublicaDeLosCocos.Core.Interfaces;
 using RepublicaDeLosCocos.Infraestructure.Data;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -38,18 +37,6 @@ namespace RepublicaDeLosCocos.Infraestructure.Repositories
         {
             _context.Patient.Add(patient);
             await _context.SaveChangesAsync();
-        }
-
-        public async Task<bool> UpdatePatientTriage(int id, UnrecoveredPatient unrecoveredPatient)
-        {
-            var currentPatient = await _context.Patient.FirstOrDefaultAsync(x => x.Id == id);
-
-            currentPatient.IdTriage = unrecoveredPatient.IdTriage;
-            currentPatient.IdPatientStatus = 1;
-            currentPatient.CheckIn = DateTime.Now;
-
-            int rows = await _context.SaveChangesAsync();
-            return rows > 0;
         }
 
         public Patient FirstPatient()

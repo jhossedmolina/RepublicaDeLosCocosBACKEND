@@ -1,0 +1,12 @@
+<Lab-Tests>
+  <Lab-Test>
+    <idPatient>1233908481</idPatient>
+    <DNA>T-A, T-A, C-G, G-C, G-C, A-T, G-C, T-A, A-T, A-T, C-G, A-T, C-G, G-C, C-G, C-G, T-A, A-T</DNA>
+    <DNARendering>T, T, C, G, G, A, G, T, A, A, C, A, C, G, C, C, T, A, T, A, G, G, C, G, T, G, T, T, A, C, T, C, C, G, A, A</DNARendering>
+  </Lab-Test>
+  <Lab-Test>
+    <IdPatient>22034125</IdPatient>
+    <DNA>T-A, T-A, C-G, G-C, A-T, T-A</DNA>
+    <DNARendering>T, T, C, G, A, T, A, T, C, G, A, A</DNARendering>
+  </Lab-Test>
+</Lab-Tests>

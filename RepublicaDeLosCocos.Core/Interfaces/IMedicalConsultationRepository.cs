@@ -5,6 +5,8 @@ namespace RepublicaDeLosCocos.Core.Interfaces
 {
     public interface IMedicalConsultationRepository
     {
+        Task<bool> RecoveredPatient(int id);
         Task<bool> UpdatePatientDiagnostic(int id, PatientDiagnostic patientDiagnostic);
+        Task<bool> UpdatePatientTriage(int id, UnrecoveredPatient patient);
     }
 }

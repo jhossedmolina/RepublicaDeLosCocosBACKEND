@@ -14,7 +14,7 @@ namespace RepublicaDeLosCocos.Infraestructure.Mappings
             CreateMap<PatientInCare, PatientInCareDTO>().ReverseMap();
             CreateMap<UnrecoveredPatient, UnrecoveredPatientDTO>().ReverseMap();
             CreateMap<PatientDiagnostic, PatientDiagnosticDTO>().ReverseMap();
-            CreateMap<VirusTestFile, VirusTestFileDTO>().ReverseMap();//.ForMember(t => t.VirusTestFile, options => options.Ignore());
+            //CreateMap<VirusTestFile, VirusTestFileDTO>().ReverseMap();//.ForMember(t => t.TestFile, options => options.Ignore());
             CreateMap<Triage, TriageDTO>().ReverseMap();
             CreateMap<PatientStatus, PatientStatusDTO>().ReverseMap();
             CreateMap<SurgeryStatus, SurgeryStatusDTO>().ReverseMap();

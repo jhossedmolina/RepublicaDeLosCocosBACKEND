@@ -1,6 +1,9 @@
-﻿namespace RepublicaDeLosCocos.Core.Entities
+﻿using Microsoft.AspNetCore.Http;
+
+namespace RepublicaDeLosCocos.Core.Entities
 {
-    public class VirusTestFile : AssignPatient
+    public class VirusTestFile
     {
+        public IFormFile TestFile { get; set; }
     }
 }

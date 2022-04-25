@@ -20,10 +20,32 @@ namespace RepublicaDeLosCocos.API.Controllers
         }
 
         [HttpPut]
+        [Route("IngresarDiagnosticoDelPacienteEnAtencion")]
         public async Task<IActionResult> PutPatientDiagnostic(int id, PatientDiagnosticDTO patientDiagnosticDTO)
         {
             var diagnostic = _mapper.Map<PatientDiagnostic>(patientDiagnosticDTO);
             var result = await _medicalConsultationService.UpdatePatientDiagnostic(id, diagnostic);
+
+            //var response = new ApiResponse<bool>(result);
+            return Ok(result);
+        }
+
+        [HttpPut]
+        [Route("EnviarPacienteEnAtencionARecuperacion")]
+        public async Task<IActionResult> RecoveredPatient(int id)
+        {
+            var result = await _medicalConsultationService.RecoveredPatient(id);
+
+            //var response = new ApiResponse<bool>(result);
+            return Ok(result);
+        }
+
+        [HttpPut]
+        [Route("ActualizarTriageDelPacienteEnAtencion")]
+        public async Task<IActionResult> PutPatientTriage(int id, UnrecoveredPatientDTO unrecoveredPatientDTO)
+        {
+            var patient = _mapper.Map<UnrecoveredPatient>(unrecoveredPatientDTO);
+            var result = await _medicalConsultationService.UpdatePatientTriage(id, patient);
 
             //var response = new ApiResponse<bool>(result);
             return Ok(result);
