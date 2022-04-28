@@ -8,8 +8,6 @@ namespace RepublicaDeLosCocos.Infraestructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Patient> builder)
         {
-            builder.Property(e => e.Id).ValueGeneratedNever();
-
             builder.Property(e => e.CheckIn).HasColumnType("datetime");
 
             builder.Property(e => e.FullName)

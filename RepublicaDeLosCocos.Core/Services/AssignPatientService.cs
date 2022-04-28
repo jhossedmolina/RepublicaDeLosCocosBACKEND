@@ -18,9 +18,9 @@ namespace RepublicaDeLosCocos.Core.Services
         }
 
 
-        public async Task<AssignPatient> GetPatient(int id)
+        public async Task<PatientForCare> GetPatient(int id)
         {
-            AssignPatient assignPatient = new AssignPatient();
+            PatientForCare patientForCare = new PatientForCare();
             var getSurgery = await _surgeryRepository.GetSurgery(id);
             
             if(getSurgery != null && getSurgery.IdSurgeryStatus == 1)
@@ -30,12 +30,17 @@ namespace RepublicaDeLosCocos.Core.Services
                 var patient = _patientRepository.FirstPatient();
                 patient.IdPatientStatus = 2;
 
-                assignPatient.IdSurgery = getSurgery.Id;
-                assignPatient.IdPatient = patient.Id;
-                assignPatient.IdTriage = patient.IdTriage;
-                assignPatient.RegistrationDate = DateTime.Now;
+                patientForCare.IdPatient = patient.Id;
+                patientForCare.IdentificationNumber = patient.IdentificationNumber;
+                patientForCare.FullName = patient.FullName;
+                patientForCare.Symptom = patient.Symptom;
+                patientForCare.IdTriage = patient.IdTriage;
+                patientForCare.IdSurgery = getSurgery.Id;
+                patientForCare.RegistrationDate = DateTime.Now;
 
-                await _assignPatientRepository.InsertAssignedPatient(assignPatient);
+                await _assignPatientRepository.InsertAssignedPatient(patientForCare);
+
+
             }
             else if (getSurgery != null && getSurgery.IdSurgeryStatus == 2)
             {
@@ -47,7 +52,7 @@ namespace RepublicaDeLosCocos.Core.Services
             }
 
            
-            return assignPatient;
+            return patientForCare;
         }
 
 

@@ -29,7 +29,7 @@ namespace RepublicaDeLosCocos.Infraestructure.Repositories
 
         public async Task<Patient> GetPatient(int id)
         {
-            var patient = await _context.Patient.FirstOrDefaultAsync(x => x.Id == id);
+            var patient = await _context.Patient.FirstOrDefaultAsync(x => x.IdentificationNumber == id);
             return patient;
         }
 

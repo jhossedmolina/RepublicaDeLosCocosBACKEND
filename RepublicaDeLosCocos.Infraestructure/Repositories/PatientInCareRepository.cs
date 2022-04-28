@@ -25,15 +25,16 @@ namespace RepublicaDeLosCocos.Infraestructure.Repositories
                 .Join(_context.Patient, asp => asp.asg.IdPatient, p => p.Id, (asp, p) => new { asp, p }).Where(x => x.p.IdPatientStatus.Equals(2))
                 .Select(m => new PatientInCare
                 {
-                    IdSurgery = m.asp.asg.IdSurgery,
-                    SurgeryName = m.asp.s.SurgeryName,
-                    NameDoctor = m.asp.s.NameDoctor,
                     IdPatient = m.p.Id,
+                    IdentificationNumber = m.p.IdentificationNumber,
                     FullName = m.p.FullName,
                     Age = m.p.Age,
                     Gender = m.p.Gender,
-                    IdTriage = m.asp.asg.IdTriage,
                     Symptom = m.p.Symptom,
+                    IdTriage = m.asp.asg.IdTriage,
+                    IdSurgery = m.asp.asg.IdSurgery,
+                    SurgeryName = m.asp.s.SurgeryName,
+                    NameDoctor = m.asp.s.NameDoctor,
                     RegistrationDate = m.asp.asg.RegistrationDate,
                     Diagnostic = m.asp.asg.Diagnostic
                 }).ToListAsync();

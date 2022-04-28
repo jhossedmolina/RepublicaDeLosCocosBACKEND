@@ -19,7 +19,7 @@ namespace RepublicaDeLosCocos.Infraestructure.Repositories
 
         public async Task<bool> RecoveredPatient(int id)
         {
-            var currentPatient = await _context.Patient.FirstOrDefaultAsync(x => x.Id == id);
+            var currentPatient = await _context.Patient.FirstOrDefaultAsync(x => x.IdentificationNumber == id);
             currentPatient.IdPatientStatus = 3;
 
             int rows = await _context.SaveChangesAsync();
@@ -38,7 +38,7 @@ namespace RepublicaDeLosCocos.Infraestructure.Repositories
 
         public async Task<bool> UpdatePatientTriage(int id, UnrecoveredPatient unrecoveredPatient)
         {
-            var currentPatient = await _context.Patient.FirstOrDefaultAsync(x => x.Id == id);
+            var currentPatient = await _context.Patient.FirstOrDefaultAsync(x => x.IdentificationNumber == id);
 
             currentPatient.IdTriage = unrecoveredPatient.IdTriage;
             currentPatient.IdPatientStatus = 1;

@@ -15,10 +15,10 @@ namespace RepublicaDeLosCocos.Infraestructure.Repositories
             _context = context;
         }
 
-        public async Task<AssignPatient> GetPatient(int id)
+        public async Task<PatientForCare> GetPatient(int id)
         {
             var assignedPatient = await _context.AssignPatient.FirstOrDefaultAsync(x => x.Id == id);
-            return assignedPatient;
+            return (PatientForCare)assignedPatient;
         }
 
         public async Task InsertAssignedPatient(AssignPatient assignPatient)

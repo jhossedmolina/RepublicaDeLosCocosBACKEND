@@ -5,6 +5,6 @@ namespace RepublicaDeLosCocos.Core.Interfaces
 {
     public interface IAssignPatientService
     {
-        Task<AssignPatient> GetPatient(int id);
+        Task<PatientForCare> GetPatient(int id);
     }
 }

@@ -10,7 +10,7 @@ namespace RepublicaDeLosCocos.Infraestructure.Validators
     {
         public PatientValidator()
         {
-            RuleFor(patient => patient.Id)
+            RuleFor(patient => patient.IdentificationNumber)
                 .NotNull(); 
 
             RuleFor(patient => patient.IdTriage)

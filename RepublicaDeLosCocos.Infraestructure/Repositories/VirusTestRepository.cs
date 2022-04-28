@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RepublicaDeLosCocos.Core.DTOs;
-using RepublicaDeLosCocos.Core.Entities;
 using RepublicaDeLosCocos.Core.Interfaces;
 using RepublicaDeLosCocos.Infraestructure.Data;
 using System.IO;

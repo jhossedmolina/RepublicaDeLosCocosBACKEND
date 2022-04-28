@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace RepublicaDeLosCocos.Core.DTOs
 {
     public class PatientDTO
     {
-        public int Id { get; set; }
+        public int IdentificationNumber { get; set; }
         public int IdTriage { get; set; }
         public string FullName { get; set; }
         public int Age { get; set; }

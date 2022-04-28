@@ -23,7 +23,7 @@ namespace RepublicaDeLosCocos.API.Controllers
         public async Task<IActionResult> GetAssignPatient(int id)
         {
             var assign = await _assignPatientService.GetPatient(id);
-            var assignPatientDto = _mapper.Map<AssignPatientDTO>(assign);
+            var assignPatientDto = _mapper.Map<PatientForCareDTO>(assign);
 
             //var response = new ApiResponse<AssignPatientDTO>(assignPatientDto);
             return Ok(assignPatientDto);
