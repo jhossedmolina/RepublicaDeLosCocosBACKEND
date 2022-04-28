@@ -1,4 +1,5 @@
 ﻿using RepublicaDeLosCocos.Core.Entities;
+using RepublicaDeLosCocos.Core.Exceptions;
 using RepublicaDeLosCocos.Core.Interfaces;
 using System;
 using System.Threading.Tasks;
@@ -44,11 +45,11 @@ namespace RepublicaDeLosCocos.Core.Services
             }
             else if (getSurgery != null && getSurgery.IdSurgeryStatus == 2)
             {
-                throw new Exception($"El Consultorio {id} Esta Atendiendo A Un Paciente");
+                throw new BusinessException($"El Consultorio {id} Ya Esta Atendiendo A Un Paciente");
             }
             else
             {
-                throw new Exception($"El Consultorio {id} No Existe");
+                throw new BusinessException($"El Consultorio {id} No Existe");
             }
 
            

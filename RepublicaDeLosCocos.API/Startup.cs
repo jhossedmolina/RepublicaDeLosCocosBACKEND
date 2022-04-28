@@ -34,7 +34,10 @@ namespace RepublicaDeLosCocos.API
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            services.AddControllers();
+            services.AddControllers(options =>
+            {
+                options.Filters.Add<GlobalExceptionFilter>();
+            });
 
             services.AddDbContext<RepublicaDeLosCocosDBContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("RepublicaDeLosCocosDB"))

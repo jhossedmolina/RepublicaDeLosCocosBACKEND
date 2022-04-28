@@ -1,4 +1,5 @@
 ﻿using RepublicaDeLosCocos.Core.Entities;
+using RepublicaDeLosCocos.Core.Exceptions;
 using RepublicaDeLosCocos.Core.Interfaces;
 using System;
 using System.Threading.Tasks;
@@ -28,11 +29,11 @@ namespace RepublicaDeLosCocos.Core.Services
             var surgery = await _surgeryRepository.GetSurgery(currentData.IdSurgery);
             if (currentPatient.IdPatientStatus != 2)
             {
-                throw new Exception($"El Paciente {currentPatient.Id} {currentPatient.FullName} No Ha Sido Atendido Por Ningun Doctor, Por Lo Tanto No Puede Darle De Alta");
+                throw new BusinessException($"El Paciente {currentPatient.Id} - {currentPatient.FullName} No Ha Sido Atendido Por Ningun Doctor, Por Lo Tanto No Puede Darle De Alta");
             }
             else if (currentData.Diagnostic == null)
             {
-                throw new Exception($"No Se Ha Ingresado El Diagnostico Para el Paciente {currentPatient.Id} {currentPatient.FullName}");
+                throw new BusinessException($"No Se Ha Ingresado El Diagnostico Para el Paciente {currentPatient.Id} {currentPatient.FullName}");
             }
             else
             {
@@ -47,7 +48,7 @@ namespace RepublicaDeLosCocos.Core.Services
             var currentPatient = await _patientRepository.GetPatient(id);
             if (currentPatient.IdPatientStatus != 2)
             {
-                throw new Exception($"El Paciente {currentPatient.Id} {currentPatient.FullName} No Ha Sido Atendido Por Ningun Doctor, Por Lo Tanto No Puede Cambiar El Triage");
+                throw new BusinessException($"El Paciente {currentPatient.Id} - {currentPatient.FullName} No Ha Sido Atendido Por Ningun Doctor, Por Lo Tanto No Puede Ingresar El Diagnostico");
             }
                
             return await _medicalConsultationRepository.UpdatePatientDiagnostic(id, patientDiagnostic);
@@ -61,7 +62,7 @@ namespace RepublicaDeLosCocos.Core.Services
 
             if (currentPatient.IdPatientStatus != 2)
             {
-                throw new Exception($"El Paciente {currentPatient.Id} {currentPatient.FullName} No Ha Sido Atendido Por Ningun Doctor, Por Lo Tanto No Puede Cambiar El Triage");
+                throw new BusinessException($"El Paciente {currentPatient.Id} {currentPatient.FullName} No Ha Sido Atendido Por Ningun Doctor, Por Lo Tanto No Puede Cambiar El Triage");
             }
             else
             {
