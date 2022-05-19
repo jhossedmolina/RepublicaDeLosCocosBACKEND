@@ -29,7 +29,14 @@ namespace RepublicaDeLosCocos.Infraestructure.Repositories
 
         public AssignPatient CurrentSurgery(int id)
         {
-            var querySurgery = _context.AssignPatient.Where(x => x.IdPatient == id).OrderByDescending(r => r.RegistrationDate);
+            var querySurgery = _context.AssignPatient
+                .Join(_context.Patient, p => p.IdPatient, p => p.Id, (asp, p) => new { asp, p })
+                .Where(x => x.p.Id == id).OrderByDescending(r => r.asp.RegistrationDate)
+                .Select(y => new AssignPatient
+                {
+                    IdSurgery = y.asp.IdSurgery
+                });
+                
             var surgery = querySurgery.FirstOrDefault();
             
             return surgery;

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using RepublicaDeLosCocos.Core.Exceptions;
-using System;
 using System.Net;
 
 namespace RepublicaDeLosCocos.Infraestructure.Filters

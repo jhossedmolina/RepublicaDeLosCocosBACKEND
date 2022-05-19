@@ -1,7 +1,6 @@
 ﻿using RepublicaDeLosCocos.Core.Entities;
 using RepublicaDeLosCocos.Core.Exceptions;
 using RepublicaDeLosCocos.Core.Interfaces;
-using System;
 using System.Threading.Tasks;
 
 namespace RepublicaDeLosCocos.Core.Services
@@ -29,11 +28,11 @@ namespace RepublicaDeLosCocos.Core.Services
             var surgery = await _surgeryRepository.GetSurgery(currentData.IdSurgery);
             if (currentPatient.IdPatientStatus != 2)
             {
-                throw new BusinessException($"El Paciente {currentPatient.Id} - {currentPatient.FullName} No Ha Sido Atendido Por Ningun Doctor, Por Lo Tanto No Puede Darle De Alta");
+                throw new BusinessException($"El Paciente {currentPatient.IdentificationNumber} - {currentPatient.FullName} No Ha Sido Atendido Por Ningun Doctor, Por Lo Tanto No Puede Darle De Alta");
             }
             else if (currentData.Diagnostic == null)
             {
-                throw new BusinessException($"No Se Ha Ingresado El Diagnostico Para el Paciente {currentPatient.Id} {currentPatient.FullName}");
+                throw new BusinessException($"No Se Ha Ingresado El Diagnostico Para el Paciente {currentPatient.IdentificationNumber} - {currentPatient.FullName}");
             }
             else
             {
@@ -48,7 +47,7 @@ namespace RepublicaDeLosCocos.Core.Services
             var currentPatient = await _patientRepository.GetPatient(id);
             if (currentPatient.IdPatientStatus != 2)
             {
-                throw new BusinessException($"El Paciente {currentPatient.Id} - {currentPatient.FullName} No Ha Sido Atendido Por Ningun Doctor, Por Lo Tanto No Puede Ingresar El Diagnostico");
+                throw new BusinessException($"El Paciente {currentPatient.IdentificationNumber} - {currentPatient.FullName} No Ha Sido Atendido Por Ningun Doctor, Por Lo Tanto No Puede Ingresar El Diagnostico");
             }
                
             return await _medicalConsultationRepository.UpdatePatientDiagnostic(id, patientDiagnostic);
@@ -57,12 +56,17 @@ namespace RepublicaDeLosCocos.Core.Services
         public async Task<bool> UpdatePatientTriage(int id, UnrecoveredPatient patient)
         {
             var currentPatient = await _patientRepository.GetPatient(id);
-            var currentSurgery = _assignPatientRepository.CurrentSurgery(id).IdSurgery;
-            var surgery = await _surgeryRepository.GetSurgery(currentSurgery);
+            var data = _assignPatientRepository.CurrentSurgery(id);
+            var surgery = await _surgeryRepository.GetSurgery(data.IdSurgery);
+            //var diagnostic = _assignPatientRepository.CurrentSurgery(id);
 
             if (currentPatient.IdPatientStatus != 2)
             {
                 throw new BusinessException($"El Paciente {currentPatient.Id} {currentPatient.FullName} No Ha Sido Atendido Por Ningun Doctor, Por Lo Tanto No Puede Cambiar El Triage");
+            }
+            else if (data.Diagnostic == null)
+            {
+                throw new BusinessException($"No Se Ha Ingresado El Diagnostico Para el Paciente {currentPatient.IdentificationNumber} - {currentPatient.FullName}");
             }
             else
             {

@@ -3,6 +3,7 @@ using RepublicaDeLosCocos.Core.Entities;
 using RepublicaDeLosCocos.Core.Interfaces;
 using RepublicaDeLosCocos.Infraestructure.Data;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace RepublicaDeLosCocos.Infraestructure.Repositories
@@ -20,6 +21,12 @@ namespace RepublicaDeLosCocos.Infraestructure.Repositories
         {
             var surgerys = await _context.Surgery.ToListAsync();
             return surgerys;
+        }
+
+        public async Task<IEnumerable<Surgery>> GetSurgerysInCare()
+        {
+            var surgerysInCare = await _context.Surgery.Where(x => x.IdSurgeryStatus == 2).ToListAsync();
+            return surgerysInCare;
         }
 
         public async Task<Surgery> GetSurgery(int id)

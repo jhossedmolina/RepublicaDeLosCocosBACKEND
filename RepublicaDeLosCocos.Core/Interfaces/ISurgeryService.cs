@@ -9,6 +9,7 @@ namespace RepublicaDeLosCocos.Core.Interfaces
         Task<bool> DeleteSurgery(int id);
         Task<Surgery> GetSurgery(int id);
         Task<IEnumerable<Surgery>> GetSurgerys();
+        Task<IEnumerable<Surgery>> GetSurgerysInCare();
         Task InsertSurgery(Surgery surgery);
     }
 }

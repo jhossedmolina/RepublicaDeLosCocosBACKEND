@@ -31,6 +31,17 @@ namespace RepublicaDeLosCocos.API.Controllers
             return Ok(surgerysDTO);
         }
 
+        [HttpGet]
+        [Route("SurgeryInCare")]
+        public async Task<IActionResult> GetSurgerysInCare()
+        {
+            var surgerysInCare = await _surgeryService.GetSurgerysInCare();
+            var surgerysInCareDTO = _mapper.Map<IEnumerable<SurgeryDTO>>(surgerysInCare);
+            return Ok(surgerysInCareDTO);
+        }
+
+
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetSurgery(int id)
         {

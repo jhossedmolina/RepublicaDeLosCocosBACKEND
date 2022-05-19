@@ -19,6 +19,11 @@ namespace RepublicaDeLosCocos.Core.Services
             return await _surgeryRepository.GetSurgerys();
         }
 
+        public async Task<IEnumerable<Surgery>> GetSurgerysInCare()
+        {
+            return await _surgeryRepository.GetSurgerysInCare();
+        }
+
         public async Task<Surgery> GetSurgery(int id)
         {
             return await _surgeryRepository.GetSurgery(id);
